@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Parrain;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Redirect;
 use View;
 
@@ -42,6 +43,54 @@ class ParrainController extends Controller
         return Redirect::route('parrains.index')->with([
             'alerts' => [
                 ["text" => "Le parrain ".$parrain->lastname." ".$parrain->firstname." a été créé avec succès !", "type" => "success"]
+            ]
+        ]);
+    }
+
+    function getImport() {
+        return view('parrains.import');
+    }
+
+    function postImport(Request $request) {
+        $separators = [
+            'comma' => ",",
+            'semicolon' => ";",
+            'colon' => ":",
+            'tab' => "\t",
+            'space' => " "
+        ];
+
+        $delimiters = [
+            "double" => '"',
+            "simple" => "'"
+        ];
+
+        $this->validate($request, [
+            'separator' => [
+                'required',
+                'string',
+                Rule::in(array_keys($separators))
+            ],
+            'delimiter' => [
+                'required',
+                'string',
+                Rule::in(array_keys($delimiters))
+            ],
+            'file' => 'required|mimetypes:text/csv,text/plain'
+        ]);
+
+        $file = trim(file_get_contents($request->file('file')->getRealPath()));
+        foreach (explode("\n",$file) as $line) {
+            $line = str_getcsv($line, $separators[$request->separator], $delimiters[$request->delimiter]);
+            $stud = new Parrain();
+            $stud->lastname = $line[0];
+            $stud->firstname = $line[1];
+            $stud->save();
+        }
+
+        return Redirect::route('parrains.index')->with([
+            'alerts' => [
+                ["text" => "Liste importée avec succès !", "type" => "success"]
             ]
         ]);
     }

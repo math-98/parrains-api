@@ -12,7 +12,7 @@
                 </a>
             </div>
             <div class="col-6">
-                <a href="#" class="btn btn-secondary btn-block mb-3">
+                <a href="{{ route('filleuls.import') }}" class="btn btn-secondary btn-block mb-3">
                     <i class="fas fa-upload"></i>
                     Importer une liste
                 </a>

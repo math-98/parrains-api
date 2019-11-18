@@ -32,6 +32,9 @@ Route::group(['prefix' => 'filleuls', 'as' => 'filleuls.'], function () {
         Route::get('create', "FilleulController@create")->name('create');
         Route::post('create', "FilleulController@store");
 
+        Route::get('import', "FilleulController@getImport")->name('import');
+        Route::post('import', "FilleulController@postImport");
+
         Route::get('{filleul}/edit', "FilleulController@edit")->name('edit');
         Route::post('{filleul}/edit', "FilleulController@update");
 
@@ -45,6 +48,9 @@ Route::group(['prefix' => 'parrains', 'as' => 'parrains.'], function () {
     Route::middleware('auth')->group(function () {
         Route::get('create', "ParrainController@create")->name('create');
         Route::post('create', "ParrainController@store");
+
+        Route::get('import', "ParrainController@getImport")->name('import');
+        Route::post('import', "ParrainController@postImport");
 
         Route::get('{parrain}/edit', "ParrainController@edit")->name('edit');
         Route::post('{parrain}/edit', "ParrainController@update");

@@ -4,6 +4,7 @@
  * application frontend using useful Laravel and JavaScript libraries.
  */
 require('./bootstrap');
+global.bsCustomFileInput = require('bs-custom-file-input');
 require('datatables.net-bs4');
 
 window.Vue = require('vue');
