@@ -9,10 +9,13 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller {
     public function index() {
+        $filleulsCount = Filleul::count();
+
         return view('home', [
-            'filleulsCount' => Filleul::count(),
+            'filleulsCount' => $filleulsCount,
             'managersCount' => Manager::count(),
-            'parrainsCount' => Parrain::count()
+            'parrainsCount' => Parrain::count(),
+            'parrainageCount' => $filleulsCount - Filleul::getAvailable()->count()
         ]);
     }
 }

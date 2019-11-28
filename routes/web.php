@@ -59,6 +59,15 @@ Route::group(['prefix' => 'parrains', 'as' => 'parrains.'], function () {
     });
 });
 
+Route::group(['prefix' => 'parrainages', 'as' => 'parrainages.'], function () {
+    Route::get('/', "ParrainageController@index")->name('index');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('attribution', "ParrainageController@attribution")->name('attribution');
+        Route::post('attribution', "ParrainageController@api");
+    });
+});
+
 Auth::routes([
     'confirm' => false,
     'register' => false,

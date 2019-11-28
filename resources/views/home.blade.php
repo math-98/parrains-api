@@ -78,12 +78,16 @@
                     </div>
                     <div class="mr-5">
                         <h5>Parrainages</h5>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
+                        @if ($parrainageCount == $filleulsCount)
+                            Terminé !
+                        @else
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{ round(($parrainageCount / $filleulsCount) * 100, 0, PHP_ROUND_HALF_DOWN) }}%;" aria-valuenow="{{ $parrainageCount }}" aria-valuemin="0" aria-valuemax="{{ $filleulsCount }}">{{ round(($parrainageCount / $filleulsCount) * 100, 0, PHP_ROUND_HALF_DOWN) }}%</div>
+                            </div>
+                        @endif
                     </div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1" href="{{ route('parrainages.index') }}">
                     <span class="float-left">Plus de détails...</span>
                     <span class="float-right">
                       <i class="fas fa-angle-right"></i>
