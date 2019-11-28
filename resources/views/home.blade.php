@@ -19,10 +19,10 @@
                     </div>
                     <div class="mr-5">
                         <h5>Filleuls</h5>
-                        0
+                        {{ $filleulsCount }}
                     </div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1" href="{{ route('filleuls.index') }}">
                     <span class="float-left">Plus de détails...</span>
                     <span class="float-right">
                       <i class="fas fa-angle-right"></i>

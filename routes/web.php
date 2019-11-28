@@ -25,6 +25,20 @@ Route::group(['prefix' => 'managers', 'as' => 'managers.', 'middleware' => 'auth
     Route::post('{manager}/delete', "ManagerController@destroy")->name('destroy');
 });
 
+Route::group(['prefix' => 'filleuls', 'as' => 'filleuls.'], function () {
+    Route::get('/', "FilleulController@index")->name('index');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('create', "FilleulController@create")->name('create');
+        Route::post('create', "FilleulController@store");
+
+        Route::get('{filleul}/edit', "FilleulController@edit")->name('edit');
+        Route::post('{filleul}/edit', "FilleulController@update");
+
+        Route::post('{filleul}/delete', "FilleulController@destroy")->name('destroy');
+    });
+});
+
 Auth::routes([
     'confirm' => false,
     'register' => false,
