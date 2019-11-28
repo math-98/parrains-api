@@ -4,6 +4,7 @@
  * application frontend using useful Laravel and JavaScript libraries.
  */
 require('./bootstrap');
+require('datatables.net-bs4');
 
 window.Vue = require('vue');
 import BootstrapVue from 'bootstrap-vue';
