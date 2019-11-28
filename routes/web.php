@@ -39,6 +39,20 @@ Route::group(['prefix' => 'filleuls', 'as' => 'filleuls.'], function () {
     });
 });
 
+Route::group(['prefix' => 'parrains', 'as' => 'parrains.'], function () {
+    Route::get('/', "ParrainController@index")->name('index');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('create', "ParrainController@create")->name('create');
+        Route::post('create', "ParrainController@store");
+
+        Route::get('{parrain}/edit', "ParrainController@edit")->name('edit');
+        Route::post('{parrain}/edit', "ParrainController@update");
+
+        Route::post('{parrain}/delete', "ParrainController@destroy")->name('destroy');
+    });
+});
+
 Auth::routes([
     'confirm' => false,
     'register' => false,
