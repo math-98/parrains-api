@@ -20,7 +20,7 @@
             </div>
         @endauth
         <div class="{{ $class }}">
-            <a href="#" class="btn btn-secondary btn-block mb-3">
+            <a href="{{ route('parrainages.pdf') }}" class="btn btn-secondary btn-block mb-3">
                 <i class="fas fa-print"></i>
                 Imprimer la liste
             </a>

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Filleul;
 use App\Parrain;
+use Barryvdh\DomPDF\PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Response;
@@ -95,5 +98,15 @@ class ParrainageController extends Controller
         }
 
         return null;
+    }
+
+    public function pdf() {
+        /** @var PDF $pdf */
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('parrainages.pdf', [
+            'parrainages' => Filleul::getParrainages()->get(),
+            'absents' => Filleul::whereAbsent(1)->get()
+        ]);
+        return $pdf->stream('iut_parrains_'.Carbon::now()->format('YmdHi').'.pdf');
     }
 }
