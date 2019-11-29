@@ -9,6 +9,7 @@ use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Redirect;
 use Response;
 use View;
 
@@ -108,5 +109,30 @@ class ParrainageController extends Controller
             'absents' => Filleul::whereAbsent(1)->get()
         ]);
         return $pdf->stream('iut_parrains_'.Carbon::now()->format('YmdHi').'.pdf');
+    }
+
+    public function assign(Filleul $filleul) {
+        return view('parrainages.assign', [
+            'filleul' => $filleul,
+            'parrains' => Parrain::all()
+        ]);
+    }
+
+    public function update(Request $request, Filleul $filleul) {
+        $this->validate($request, [
+            'parrain' => 'required|numeric|exists:parrains,id'
+        ]);
+
+        $parrain = Parrain::find($request->parrain);
+
+        $filleul->parrain_id = $parrain->id;
+        $filleul->absent = 0;
+        $filleul->save();
+
+        return Redirect::route('parrainages.index')->with([
+            'alerts' => [
+                ["text" => "Le filleul ".$filleul->lastname." ".$filleul->firstname." a été associé au parrain ".$parrain->lastname." ".$parrain->firstname." avec succès !", "type" => "success"]
+            ]
+        ]);
     }
 }

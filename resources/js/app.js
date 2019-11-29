@@ -6,6 +6,7 @@
 require('./bootstrap');
 global.bsCustomFileInput = require('bs-custom-file-input');
 require('datatables.net-bs4');
+require('select2');
 
 window.Vue = require('vue');
 import BootstrapVue from 'bootstrap-vue';

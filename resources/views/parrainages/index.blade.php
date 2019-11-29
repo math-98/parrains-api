@@ -45,7 +45,7 @@
                     <td>{{ $parrainage->parrain->lastname }} {{ $parrainage->parrain->firstname }}</td>
                     @auth
                         <td>
-                            <a href="#" class="btn btn-block btn-success">
+                            <a href="{{ route('parrainages.assign', $parrainage->id) }}" class="btn btn-block btn-success">
                                 <i class="fas fa-pen"></i>
                                 Editer
                             </a>
@@ -74,7 +74,7 @@
                     <td>{{ $absent->lastname }} {{ $absent->firstname }}</td>
                     @auth
                         <td>
-                            <a href="#" class="btn btn-block btn-secondary">
+                            <a href="{{ route('parrainages.assign', $absent->id) }}" class="btn btn-block btn-secondary">
                                 <i class="fas fa-plus"></i>
                                 Assigner
                             </a>

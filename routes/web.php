@@ -65,6 +65,9 @@ Route::group(['prefix' => 'parrainages', 'as' => 'parrainages.'], function () {
     Route::get('pdf', "ParrainageController@pdf")->name('pdf');
 
     Route::middleware('auth')->group(function () {
+        Route::get('{filleul}/assign', "ParrainageController@assign")->name('assign');
+        Route::post('{filleul}/assign', "ParrainageController@update");
+
         Route::get('attribution', "ParrainageController@attribution")->name('attribution');
         Route::post('attribution', "ParrainageController@api");
     });
