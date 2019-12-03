@@ -3,7 +3,7 @@
 @section("title", "Connexion")
 
 @section("content")
-    <form method="post" target="">
+    <form method="post" action="">
         @csrf
         <div class="form-group">
             <div class="form-label-group">
@@ -27,4 +27,7 @@
         </div>
         <input type="submit" class="btn btn-primary btn-block" value="Connexion"/>
     </form>
+    <div class="text-center">
+        <a class="small" href="{{ route('password.request') }}">Mot de passe oublié ?</a>
+    </div>
 @endsection
