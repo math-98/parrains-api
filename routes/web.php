@@ -75,6 +75,5 @@ Route::group(['prefix' => 'parrainages', 'as' => 'parrainages.'], function () {
 
 Auth::routes([
     'confirm' => false,
-    'register' => false,
     'reset' => false,
 ]);
