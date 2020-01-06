@@ -31,7 +31,6 @@ class AddParrainKeyToFilleul extends Migration
     public function down()
     {
         Schema::table('filleul', function (Blueprint $table) {
-            //
         });
     }
 }
