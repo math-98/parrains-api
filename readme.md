@@ -26,3 +26,4 @@ Si vous souhaitez simplement déployer les mises à jour sans faire de modificat
 
 ## Todo
  * Liaison LDAP : Permettre aux managers d'importer les listes depuis un serveur LDAP
+ * Routage sous-domaine : Permettre l'hébergement de plusieurs instances sur la même version
