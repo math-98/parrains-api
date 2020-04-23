@@ -3,7 +3,7 @@
 @section("title", "Inscription")
 
 @section("content")
-    <form method="post" action="">
+    <form method="post" action="{{ route('register') }}">
         @csrf
         <div class="form-group">
             <div class="form-label-group">

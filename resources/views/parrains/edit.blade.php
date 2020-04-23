@@ -3,8 +3,9 @@
 @section('title', "Editer le parrain ".$parrain->lastname." ".$parrain->firstname)
 
 @section('content')
-    <form method="post" action="{{ route('parrains.edit', $parrain->id) }}">
+    <form method="post" action="{{ route('parrains.store', $parrain->id) }}">
         @csrf
+        @method('PUT')
         <div class="form-group">
             <label for="inputLastname">Nom</label>
             <input type="text" class="form-control" id="inputLastname" name="lastname" value="{{ old('lastname', $parrain->lastname) }}" required>

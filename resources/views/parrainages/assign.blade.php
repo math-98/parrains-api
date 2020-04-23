@@ -3,7 +3,7 @@
 @section("title", "Assigner un parrain à ".$filleul->lastname." ".$filleul->firstname)
 
 @section("content")
-    <form action="" method="post">
+    <form method="post" action="{{ route('parrainages.assign') }}">
         @csrf
         <div class="form-group mb-3">
             <label for="parrainSelect">Sélectionnez un parrain</label>

@@ -11,51 +11,24 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController')->name('home');
 
-Route::group(['prefix' => 'managers', 'as' => 'managers.', 'middleware' => 'auth'], function () {
-    Route::get('/', 'ManagerController@index')->name('index');
+Route::resource('managers', 'ManagerController')->middleware('auth');
 
-    Route::get('create', 'ManagerController@create')->name('create');
-    Route::post('create', 'ManagerController@store');
+Route::resource('filleuls', 'FilleulController')->only('index');
+Route::resource('parrains', 'ParrainController')->only('index');
 
-    Route::get('{manager}/edit', 'ManagerController@edit')->name('edit');
-    Route::post('{manager}/edit', 'ManagerController@update');
-
-    Route::post('{manager}/delete', 'ManagerController@destroy')->name('destroy');
-});
-
-Route::group(['prefix' => 'filleuls', 'as' => 'filleuls.'], function () {
-    Route::get('/', 'FilleulController@index')->name('index');
-
-    Route::middleware('auth')->group(function () {
-        Route::get('create', 'FilleulController@create')->name('create');
-        Route::post('create', 'FilleulController@store');
-
+Route::middleware('auth')->group(function () {
+    Route::resource('filleuls', 'FilleulController')->except('index');
+    Route::group(['prefix' => 'filleuls', 'as' => 'filleuls.'], function () {
         Route::get('import', 'FilleulController@getImport')->name('import');
         Route::post('import', 'FilleulController@postImport');
-
-        Route::get('{filleul}/edit', 'FilleulController@edit')->name('edit');
-        Route::post('{filleul}/edit', 'FilleulController@update');
-
-        Route::post('{filleul}/delete', 'FilleulController@destroy')->name('destroy');
     });
-});
 
-Route::group(['prefix' => 'parrains', 'as' => 'parrains.'], function () {
-    Route::get('/', 'ParrainController@index')->name('index');
-
-    Route::middleware('auth')->group(function () {
-        Route::get('create', 'ParrainController@create')->name('create');
-        Route::post('create', 'ParrainController@store');
-
-        Route::get('import', 'ParrainController@getImport')->name('import');
+    Route::resource('parrains', 'ParrainController')->except('index');
+    Route::group(['prefix' => 'parrains', 'as' => 'parrains.'], function () {
+        Route::get('import', 'ParrainController@import')->name('import');
         Route::post('import', 'ParrainController@postImport');
-
-        Route::get('{parrain}/edit', 'ParrainController@edit')->name('edit');
-        Route::post('{parrain}/edit', 'ParrainController@update');
-
-        Route::post('{parrain}/delete', 'ParrainController@destroy')->name('destroy');
     });
 });
 

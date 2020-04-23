@@ -8,7 +8,7 @@ use App\Parrain;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $filleulsCount = Filleul::count();
 

@@ -13,6 +13,7 @@
             <div class="modal-footer">
                 <form method="post" action="{{ route('managers.destroy', $manager->id) }}">
                     @csrf
+                    @method('DELETE')
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                     <input type="submit" class="btn btn-danger" value="Supprimer">
                 </form>

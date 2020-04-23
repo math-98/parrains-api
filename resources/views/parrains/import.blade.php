@@ -7,7 +7,7 @@
         <div class="col-lg-6">
             <section class="card">
                 <div class="card-body">
-                    <form action="{{ route('parrains.import') }}" method="post" id="fileFormatForm" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('parrains.import') }}" id="fileFormatForm" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-4">
                             <h3>Options du fichier</h3>

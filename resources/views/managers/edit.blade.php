@@ -3,8 +3,9 @@
 @section('title', "Editer le manager ".$manager->name)
 
 @section('content')
-    <form method="post" action="{{ route('managers.edit', $manager->id) }}">
+    <form method="post" action="{{ route('managers.store', $manager->id) }}">
         @csrf
+        @method('PUT')
         <div class="form-group">
             <label for="inputName">Nom</label>
             <input type="text" class="form-control" id="inputName" name="name" value="{{ old('name', $manager->name) }}" required>
