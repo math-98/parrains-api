@@ -22,5 +22,5 @@ yarn-error.log
 /public/js/app.js
 /public/fonts/
 
-/.php_cs.cache
+/.php-cs-fixer.cache
 /hosts.yml
