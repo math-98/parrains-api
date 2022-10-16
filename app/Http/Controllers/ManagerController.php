@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Manager;
+use App\Models\Manager;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;

@@ -1,14 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Parrain extends Model
 {
+    protected $guarded = [];
+
     public function filleuls()
     {
-        return $this->hasMany('App\Filleul');
+        return $this->hasMany('App\Models\Filleul');
     }
 
     public static function getAvailable()

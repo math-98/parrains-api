@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Filleul;
-use App\Manager;
-use App\Parrain;
+use App\Models\Filleul;
+use App\Models\Manager;
+use App\Models\Parrain;
 
 class HomeController extends Controller
 {

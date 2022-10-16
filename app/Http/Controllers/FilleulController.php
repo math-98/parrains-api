@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Filleul;
+use App\Models\Filleul;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Redirect;

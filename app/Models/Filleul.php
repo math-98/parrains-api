@@ -1,14 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Filleul extends Model
 {
+    protected $guarded = [];
+
     public function parrain()
     {
-        return $this->belongsTo('App\Parrain');
+        return $this->belongsTo('App\Models\Parrain');
     }
 
     public static function getAvailable()

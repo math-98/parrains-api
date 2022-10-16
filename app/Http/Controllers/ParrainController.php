@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Parrain;
+use App\Models\Parrain;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Redirect;

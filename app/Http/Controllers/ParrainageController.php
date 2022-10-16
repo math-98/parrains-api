@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App;
-use App\Filleul;
-use App\Parrain;
+use App\Models\Filleul;
+use App\Models\Parrain;
 use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
