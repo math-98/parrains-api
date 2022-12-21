@@ -12,6 +12,8 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.6",
         "friendsofphp/php-cs-fixer": "^v3.12.0",
+        "laravel-lang/lang": "^12.8",
+        "laravel-lang/publisher": "^14.4",
         "nunomaduro/collision": "^v6.1.0",
         "phpro/grumphp": "^1.13",
         "spatie/laravel-ignition": "^1.0"
