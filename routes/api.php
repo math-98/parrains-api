@@ -24,7 +24,7 @@ Route::apiResources([
     'only' => ['index'],
 ]);
 
-Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
@@ -47,5 +47,5 @@ Route::group([
 ], function () {
     Route::get('/', 'index');
     Route::get('pdf', 'pdf');
-    Route::post('attribution', 'api')->middleware('auth:api');
+    Route::post('attribution', 'api')->middleware('auth:sanctum');
 });

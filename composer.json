@@ -2,8 +2,10 @@
     "require": {
         "php": "^8.0",
         "barryvdh/laravel-dompdf": "^v2.0.0",
+        "fruitcake/laravel-cors": "^3.0",
         "laravel/fortify": "^1.13",
         "laravel/framework": "^9.0",
+        "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.0"
     },
     "require-dev": {
