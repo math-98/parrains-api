@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Parrain extends Model
 {
     protected $guarded = [];
+    protected $casts = ['absent' => 'boolean'];
 
     public function filleuls()
     {

@@ -9,33 +9,16 @@ use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Redirect;
 use Response;
-use View;
 
 class ParrainageController extends Controller
 {
-    public function __construct()
-    {
-        View::share([
-            'breadcrumbs' => [
-                ['url' => route('parrainages.index'), 'name' => 'Parrainages'],
-            ],
-        ]);
-    }
-
     public function index()
     {
-        return view('parrainages.index', [
-            'breadcrumbs' => [],
+        return [
             'parrainages' => Filleul::getParrainages()->get(),
             'absents' => Filleul::whereAbsent(1)->get(),
-        ]);
-    }
-
-    public function attribution()
-    {
-        return view('parrainages.attribution');
+        ];
     }
 
     private function getStats()
@@ -50,7 +33,7 @@ class ParrainageController extends Controller
 
     public function api(Request $request)
     {
-        $action = $this->validate($request, [
+        $action = $request->validate([
             'action' => [
                 'required',
                 Rule::in(['GETDUO', 'FILLEULABS', 'PARRAINABS', 'DUOVALID']),
@@ -66,7 +49,7 @@ class ParrainageController extends Controller
                 break;
 
             case 'FILLEULABS':
-                $id = $this->validate($request, [
+                $id = $request->validate([
                     'data' => 'required|numeric|exists:filleuls,id',
                 ])['data'];
                 $student = Filleul::find($id);
@@ -79,7 +62,7 @@ class ParrainageController extends Controller
                 break;
 
             case 'PARRAINABS':
-                $id = $this->validate($request, [
+                $id = $request->validate([
                     'data' => 'required|numeric|exists:parrains,id',
                 ])['data'];
                 $student = Parrain::find($id);
@@ -92,7 +75,7 @@ class ParrainageController extends Controller
                 break;
 
             case 'DUOVALID':
-                $duo = $this->validate($request, [
+                $duo = $request->validate([
                     'data.filleul' => 'required|numeric|exists:filleuls,id',
                     'data.parrain' => 'required|numeric|exists:parrains,id',
                 ])['data'];
@@ -116,32 +99,5 @@ class ParrainageController extends Controller
         ]);
 
         return $pdf->stream('iut_parrains_'.Carbon::now()->format('YmdHi').'.pdf');
-    }
-
-    public function assign(Filleul $filleul)
-    {
-        return view('parrainages.assign', [
-            'filleul' => $filleul,
-            'parrains' => Parrain::all(),
-        ]);
-    }
-
-    public function update(Request $request, Filleul $filleul)
-    {
-        $this->validate($request, [
-            'parrain' => 'required|numeric|exists:parrains,id',
-        ]);
-
-        $parrain = Parrain::find($request->parrain);
-
-        $filleul->parrain_id = $parrain->id;
-        $filleul->absent = 0;
-        $filleul->save();
-
-        return Redirect::route('parrainages.index')->with([
-            'alerts' => [
-                ['text' => 'Le filleul '.$filleul->lastname.' '.$filleul->firstname.' a été associé au parrain '.$parrain->lastname.' '.$parrain->firstname.' avec succès !', 'type' => 'success'],
-            ],
-        ]);
     }
 }

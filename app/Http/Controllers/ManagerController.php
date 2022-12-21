@@ -3,101 +3,52 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manager;
-use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rule;
-use Redirect;
-use View;
+use Illuminate\Validation\Rules\Password;
 
 class ManagerController extends Controller
 {
-    public function __construct()
-    {
-        View::share([
-            'breadcrumbs' => [
-                ['url' => route('managers.index'), 'name' => 'Managers'],
-            ],
-        ]);
-    }
-
     public function index()
     {
-        return view('managers.index', [
-            'breadcrumbs' => [],
-            'managers' => Manager::all(),
-        ]);
-    }
-
-    public function create()
-    {
-        return view('managers.create');
+        return Manager::all();
     }
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $data = $request->validate([
            'name' => 'required|string|max:255',
            'email' => 'required|email|max:255|unique:managers',
-           'password' => 'required|string|confirmed|max:255',
+           'password' => Password::required(),
         ]);
 
-        $manager = new Manager();
-        $manager->name = $request->name;
-        $manager->email = $request->email;
-        $manager->password = Hash::make($request->password);
-        $manager->save();
-
-        return Redirect::route('managers.index')->with([
-            'alerts' => [
-                ['text' => 'Le manager '.$manager->name.' a été créé avec succès !', 'type' => 'success'],
-            ],
-        ]);
-    }
-
-    public function edit(Manager $manager)
-    {
-        return view('managers.edit', [
-            'manager' => $manager,
-        ]);
+        return Manager::create($data);
     }
 
     public function update(Request $request, Manager $manager)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
+        $data = $request->validate([
+            'name' => 'sometimes|string|max:255',
             'email' => [
-                'required',
+                'sometimes',
                 'email',
                 'max:255',
                 Rule::unique('managers')->ignore($manager->id),
             ],
-            'password' => 'nullable|string|confirmed|max:255',
+            'password' => Password::sometimes(),
         ]);
 
-        $manager->name = $request->name;
-        $manager->email = $request->email;
+        $manager->update($data);
 
-        if ($request->exists('password')) {
-            $manager->password = Hash::make($request->password);
-        }
-
-        $manager->save();
-
-        return Redirect::route('managers.index')->with([
-            'alerts' => [
-                ['text' => 'Le manager '.$manager->name.' a été édité avec succès !', 'type' => 'success'],
-            ],
-        ]);
+        return $manager;
     }
 
     public function destroy(Manager $manager)
     {
         $manager->delete();
 
-        return Redirect::route('managers.index')->with([
-            'alerts' => [
-                ['text' => 'Le manager '.$manager->name.' a été supprimé avec succès !', 'type' => 'success'],
-            ],
-        ]);
+        return Response::json(null, 204);
     }
 }
