@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\FilleulController;
 use App\Http\Controllers\ManagerController;
-use App\Http\Controllers\ParrainageController;
 use App\Http\Controllers\ParrainController;
 use Illuminate\Http\Request;
 
@@ -35,17 +35,14 @@ Route::middleware('auth:sanctum')->group(function () {
     ], [
         'except' => ['index', 'show'],
     ]);
-    Route::post('filleuls/{filleul}/assign', [ParrainageController::class, 'update']);
     Route::apiResource('managers', ManagerController::class, [
         'except' => ['show'],
     ]);
 });
 
 Route::group([
-    'prefix' => 'parrainages',
-    'controller' => ParrainageController::class,
+    'prefix' => 'export',
+    'controller' => ExportController::class,
 ], function () {
-    Route::get('/', 'index');
     Route::get('pdf', 'pdf');
-    Route::post('attribution', 'api')->middleware('auth:sanctum');
 });
