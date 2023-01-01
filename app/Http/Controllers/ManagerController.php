@@ -47,6 +47,10 @@ class ManagerController extends Controller
 
     public function destroy(Manager $manager)
     {
+        if ($manager->id == Auth::id()) {
+            abort(403, 'Vous ne pouvez pas supprimer votre propre compte.');
+        }
+
         $manager->delete();
 
         return Response::json(null, 204);
