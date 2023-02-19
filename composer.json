@@ -12,7 +12,7 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.6",
         "fakerphp/faker": "^1.9.1",
-        "friendsofphp/php-cs-fixer": "~v3.12.0",
+        "friendsofphp/php-cs-fixer": "~v3.14.0",
         "laravel-lang/lang": "^12.8",
         "laravel-lang/publisher": "^14.4",
         "nunomaduro/collision": "^v6.1.0",
