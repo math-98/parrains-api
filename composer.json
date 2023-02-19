@@ -13,7 +13,7 @@
         "laravel-lang/lang": "^12.8",
         "laravel-lang/publisher": "^14.4",
         "nunomaduro/collision": "^v6.1.0",
-        "spatie/laravel-ignition": "^1.0"
+        "spatie/laravel-ignition": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,
