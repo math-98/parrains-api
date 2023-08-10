@@ -9,7 +9,7 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
-        "laravel-lang/lang": "^12.8",
+        "laravel-lang/lang": "^13.0",
         "laravel-lang/publisher": "^14.4",
         "nunomaduro/collision": "^v7.0.0",
         "spatie/laravel-ignition": "^2.0"

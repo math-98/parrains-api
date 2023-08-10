@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22aced9c93daab266553031171f506a8",
+    "content-hash": "bda23f69db0ad058c861637d9b5a069c",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -6031,36 +6031,27 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "12.17.0",
+            "version": "13.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "fc84652189915bcc9b8f44104ad1344da5d70e9f"
+                "reference": "69b3a29907ee0018ebd75ce37a217d020cd9aa21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/fc84652189915bcc9b8f44104ad1344da5d70e9f",
-                "reference": "fc84652189915bcc9b8f44104ad1344da5d70e9f",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/69b3a29907ee0018ebd75ce37a217d020cd9aa21",
+                "reference": "69b3a29907ee0018ebd75ce37a217d020cd9aa21",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*"
-            },
-            "conflict": {
-                "laravel-lang/publisher": "<14.0"
+                "ext-json": "*",
+                "laravel-lang/publisher": "^14.0",
+                "php": "^8.1"
             },
             "require-dev": {
-                "laravel-lang/publisher": "^14.0",
-                "laravel-lang/status-generator": "^1.11.1",
-                "php": "^8.1",
-                "phpunit/phpunit": "^9.5",
-                "symfony/var-dumper": "^5.0 || ^6.0"
-            },
-            "suggest": {
-                "arcanedev/laravel-lang": "Translations manager and checker for Laravel",
-                "laravel-lang/attributes": "Translations for field names of the forms",
-                "laravel-lang/http-statuses": "Translations for HTTP statuses",
-                "laravel-lang/publisher": "Easy installation and update of translation files for your project"
+                "laravel-lang/status-generator": "^1.19",
+                "phpunit/phpunit": "^10.0",
+                "symfony/var-dumper": "^6.0"
             },
             "type": "library",
             "extra": {
@@ -6085,7 +6076,7 @@
                     "homepage": "https://github.com/Laravel-Lang"
                 }
             ],
-            "description": "Languages for Laravel",
+            "description": "List of 78 languages for Laravel Framework, Laravel Jetstream, Laravel Fortify, Laravel Breeze, Laravel Cashier, Laravel Nova, Laravel Spark and Laravel UI",
             "keywords": [
                 "lang",
                 "languages",
@@ -6102,7 +6093,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-02-14T22:05:52+00:00"
+            "time": "2023-08-09T08:51:25+00:00"
         },
         {
             "name": "laravel-lang/publisher",
