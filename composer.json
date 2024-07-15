@@ -1,17 +1,18 @@
 {
     "require": {
-        "php": "^8.0",
+        "php": "^8.2",
+        "ext-curl": "*",
         "barryvdh/laravel-dompdf": "^v2.0.0",
         "laravel/fortify": "^1.13",
-        "laravel/framework": "^10.0",
-        "laravel/sanctum": "^3.2",
+        "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
-        "laravel-lang/lang": "^12.8",
-        "laravel-lang/publisher": "^14.4",
-        "nunomaduro/collision": "^v7.0.0",
+        "laravel-lang/lang": "^15.5",
+        "laravel-lang/publisher": "^16.4",
+        "nunomaduro/collision": "^v8.1.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "config": {
